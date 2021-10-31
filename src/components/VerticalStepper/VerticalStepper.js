@@ -13,28 +13,7 @@ import Topics from "../../data/tips";
 
 // https://mui.com/components/steppers/#VerticalLinearStepper.js
 
-const steps = Object.keys(Topics).map(x => ( { label: x }));
-
-// [
-//   {
-//     label: 'Select campaign settings',
-//     description: `For each ad campaign that you create, you can control how much
-//               you're willing to spend on clicks and conversions, which networks
-//               and geographical locations you want your ads to show on, and more.`,
-//   },
-//   {
-//     label: 'Create an ad group',
-//     description:
-//       'An ad group contains one or more ads which target a shared set of keywords.',
-//   },
-//   {
-//     label: 'Create an ad',
-//     description: `Try out different ad text to see what brings in the most customers,
-//               and learn how to enhance your ads using features like ad extensions.
-//               If you run into any problems with your ads, find out how to tell if
-//               they're running and how to resolve approval issues.`,
-//   },
-// ];
+const steps = Object.keys(Topics).map(x => ({ label: x }));
 
 export default function VerticalLinearStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
@@ -52,13 +31,13 @@ export default function VerticalLinearStepper() {
     };
 
     return (
-        <Box sx={{ maxWidth: 400 }}>
+        <Box sx={{ minWidth: 600 }}>
             <Stepper activeStep={activeStep} orientation="vertical">
                 {steps.map((step, index) => (
                     <Step key={step.label}>
                         <StepLabel
                             optional={
-                                index === steps.length-1 ? (
+                                index === steps.length - 1 ? (
                                     <Typography variant="caption">Last step</Typography>
                                 ) : null
                             }
@@ -66,9 +45,7 @@ export default function VerticalLinearStepper() {
                             {step.label}
                         </StepLabel>
                         <StepContent>
-                            {/* STEP DESCRIPTION to HORIZONTAL STEPPER */}
-                            {/* <Typography>{step.description}</Typography> */}
-                            <HorizontalStepper> </HorizontalStepper>
+                            <HorizontalStepper data={step}> </HorizontalStepper>
                             <Box sx={{ mb: 2 }}>
                                 <div>
                                     <Button
