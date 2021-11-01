@@ -7,32 +7,25 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
+import Questions from "../../data/questions"
 
-export default function ErrorRadios() {
+export default function ErrorRadios(props) {
+  const { sectionLabel } = props;
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Choose wisely");
   const [answerFeedback, setAnswerFeedback] = React.useState([]);
 
-  const question = "How do you stop a recursive loop?";
+  const question = Object.keys(Questions[sectionLabel][0])[0]
 
-  const originalAnswerFeedback = {
-    "By having a base condition and parameters that will reach the base condition":
-      "You got it!",
-    "A base condition":
-      "Almost, but the values passed into the recursive function are also important.",
-    "Decreasing values passed into the recursive function":
-      "Not quite. A base condition is needed and parameter to reach the condition which may be increasing.",
-    "Wait for the sedative to wear off":
-      "In the movie Inception that may have helped but not in your code."
-    };
+  const originalAnswerFeedback = Questions[sectionLabel][0][question]?.choicesWithFeedback
 
   useEffect(() => {
     setAnswerFeedback(
       Object.keys(originalAnswerFeedback)
         .sort(() => 0.5 - Math.random())
     );
-  }, []);
+  }, [originalAnswerFeedback]);
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -78,7 +71,7 @@ export default function ErrorRadios() {
             );
           })}
         </RadioGroup>
-        <FormHelperText sx={{color:'green'}}>{helperText}</FormHelperText>
+        <FormHelperText sx={{ color: 'green' }}>{helperText}</FormHelperText>
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
           Check Answer
         </Button>

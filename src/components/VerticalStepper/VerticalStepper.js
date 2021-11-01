@@ -45,7 +45,7 @@ export default function VerticalLinearStepper() {
                             {step.label}
                         </StepLabel>
                         <StepContent>
-                            <HorizontalStepper data={step}> </HorizontalStepper>
+                            <HorizontalStepper sectionLabel={step.label}> </HorizontalStepper>
                             <Box sx={{ mb: 2 }}>
                                 <div>
                                     <Button

@@ -5,17 +5,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
-import Dialog from "@mui/material/Dialog";
-import {
-  Grid4x4Rounded,
-  GridGoldenratioSharp,
-  GridOnRounded,
-} from "@mui/icons-material";
 import { Typography } from "@mui/material";
 
-const submitEmail = () => {
-  console.log(`this`, this);
-};
+// const submitEmail = () => {
+//   console.log(`this`, this);
+// };
 
 const EmailSignUp = () => {
   const [email, setEmail] = useState("");

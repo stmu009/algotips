@@ -6,18 +6,26 @@ import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Topics from "../../data/tips";
+import { STEPS } from '../../data/constants';
+import Question from '../Question';
+import Feedback from '../Feedback';
 
 // https://mui.com/components/steppers/#CustomizedSteppers.js
 
-const steps = ['Tip', 'Question', 'Feedback']
-
 export default function HorizontalNonLinearStepper(props) {
-  const { data: { label } } = props
+  const { sectionLabel } = props
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
+  const stepMapping = {
+    Tip: <span dangerouslySetInnerHTML={{ __html: Topics[sectionLabel]?.tips[0]?.content }}></span>,
+    Question: <Question sectionLabel={sectionLabel}></Question>,
+    Feedback: <Feedback sectionLabel={sectionLabel}></Feedback>
+  }
+
   const totalSteps = () => {
-    return steps.length;
+    return STEPS.length;
   };
 
   const completedSteps = () => {
@@ -37,7 +45,7 @@ export default function HorizontalNonLinearStepper(props) {
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
         // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+        STEPS.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -65,7 +73,7 @@ export default function HorizontalNonLinearStepper(props) {
   return (
     <Box sx={{ width: '100%' }}>
       <Stepper nonLinear activeStep={activeStep}>
-        {steps.map((label, index) => (
+        {STEPS.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>
               {label}
@@ -87,8 +95,8 @@ export default function HorizontalNonLinearStepper(props) {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              <div dangerouslySetInnerHTML={{ __html: Topics[label]?.tips[0]?.content }}></div>
+            <Typography sx={{ mt: 2, mb: 1 }} align="left" variant="body2" color="text.secondary" component={'div'}>
+              {stepMapping[STEPS[activeStep]]}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
@@ -103,7 +111,7 @@ export default function HorizontalNonLinearStepper(props) {
               <Button onClick={handleNext} sx={{ mr: 1 }}>
                 Next
               </Button>
-              {activeStep !== steps.length &&
+              {activeStep !== STEPS.length &&
                 (completed[activeStep] ? (
                   <Typography variant="caption" sx={{ display: 'inline-block' }}>
                     Step {activeStep + 1} already completed

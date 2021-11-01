@@ -1,9 +1,7 @@
 import AppBar from "../../components/AppBar";
-import ComplexCard from "../../components/ComplexCard";
 import Box from "@mui/material/Box";
-import EmailSignUp from "../../components/EmailSignUp";
-import Results from "../../components/Results";
-// import Parent from "../../components/test"
+// import EmailSignUp from "../../components/EmailSignUp";
+// import Results from "../../components/Results";
 import VerticalStepper from "../../components/VerticalStepper"
 
 const Home = () => {
@@ -21,8 +19,6 @@ const Home = () => {
       >
         {
           // <EmailSignUp></EmailSignUp>
-          // <ComplexCard/>
-          // <Parent></Parent>
           <VerticalStepper></VerticalStepper>
           // <Results></Results>
         }
