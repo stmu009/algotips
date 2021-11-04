@@ -18,12 +18,12 @@ export default function ErrorRadios(props) {
 
   const question = Object.keys(Questions[sectionLabel][0])[0]
 
-  const originalAnswerFeedback = Questions[sectionLabel][0][question]?.choicesWithFeedback
+  const originalAnswerFeedback = Questions[sectionLabel][0][question]?.choicesWithFeedback || {}
 
   useEffect(() => {
     setAnswerFeedback(
       Object.keys(originalAnswerFeedback)
-        .sort(() => 0.5 - Math.random())
+        ?.sort(() => 0.5 - Math.random())
     );
   }, [originalAnswerFeedback]);
 

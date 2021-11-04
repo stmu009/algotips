@@ -15,7 +15,7 @@ export default function ErrorRadios(props) {
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
-    setHelperText(' ');
+    // setHelperText(' ');
     setError(false);
   };
 

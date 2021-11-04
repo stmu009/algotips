@@ -33,7 +33,7 @@
 
 ## Results
 
-- Point out area for improvement
+- Point out area for improvement - Timer on each question
 - Links to additional resources
 - Links to additional assessments
 
