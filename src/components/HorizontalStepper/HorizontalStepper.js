@@ -9,6 +9,7 @@ import Topics from "../../data/tips";
 import { STEPS } from '../../data/constants';
 import Question from '../Question';
 import Feedback from '../Feedback';
+import Tip from '../Tip';
 
 // https://mui.com/components/steppers/#CustomizedSteppers.js
 
@@ -19,7 +20,7 @@ export default function HorizontalNonLinearStepper(props) {
   const [completed, setCompleted] = React.useState({});
 
   const stepMapping = {
-    Tip: <span dangerouslySetInnerHTML={{ __html: Topics[sectionLabel]?.tips[0]?.content }}></span>,
+    Tip: <Tip sectionLabel={sectionLabel}></Tip>,
     Question: <Question sectionLabel={sectionLabel}></Question>,
     Feedback: <Feedback sectionLabel={sectionLabel}></Feedback>
   }
