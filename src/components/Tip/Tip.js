@@ -35,7 +35,7 @@ const Tip = (props) => {
                     {intro}
                     {code}
                     {explanation}
-                    {tipReferences.length > 0 &&
+                    {tipReferences?.length > 0 &&
                         <Typography variant="caption">
                             <em>reference(s):
                                 <ul style={{ listStyle: 'none' }}>
