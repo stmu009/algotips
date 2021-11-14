@@ -31,10 +31,12 @@ export default function VerticalLinearStepper() {
     };
 
     return (
-        <Box sx={{ minWidth: 600 }}>
-            <Stepper activeStep={activeStep} orientation="vertical">
+        <Box 
+        sx={{ minWidth: "100vw" }}
+        >
+            <Stepper activeStep={activeStep} orientation="vertical" sx={{ padding: "1rem" }}>
                 {steps.map((step, index) => (
-                    <Step key={step.label}>
+                    <Step key={step.label} >
                         <StepLabel
                             optional={
                                 index === steps.length - 1 ? (

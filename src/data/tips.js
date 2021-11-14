@@ -122,18 +122,18 @@ console.log('reverse('something'):', reverse('something'))
       {},
     ],
   },
-  "Breadth First Search": {
+  // "Breadth First Search": {
 
-  },
-  "Depth First Search": {
+  // },
+  // "Depth First Search": {
 
-  },
-  Queues: {
+  // },
+  // Queues: {
 
-  },
-  Stacks: {
+  // },
+  // Stacks: {
 
-  },
+  // },
   BUD: {
 
   },
@@ -143,9 +143,9 @@ console.log('reverse('something'):', reverse('something'))
   "Hash Tables": {
 
   },
-  "Quick Sort": {
+  // "Quick Sort": {
 
-  },
+  // },
 };
 
 export default tips;
