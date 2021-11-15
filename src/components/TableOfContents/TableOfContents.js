@@ -13,13 +13,13 @@ const TableOfContents = () => {
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
       sx={{
-        float: "left",
+        // float: "left",
         backgroundColor: "#1a76d2",
         padding: "1rem 2rem",
         // height: 240,
         flexGrow: 1,
-        maxWidth: 400,
-        overflowY: "auto",
+        // maxWidth: 400,
+        // overflowY: "auto",
       }}
     >
       {topics.map((topic, i) => {
