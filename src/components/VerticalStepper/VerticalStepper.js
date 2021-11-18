@@ -9,6 +9,8 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import HorizontalStepper from '../HorizontalStepper';
 import Topics from "../../data/tips";
+import Results from "../../components/Results";
+
 
 
 // https://mui.com/components/steppers/#VerticalLinearStepper.js
@@ -55,7 +57,7 @@ export default function VerticalLinearStepper() {
                                         onClick={handleNext}
                                         sx={{ mt: 1, mr: 1 }}
                                     >
-                                        {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                                        {index === steps.length - 1 ? 'Finish' : 'Next Tip'}
                                     </Button>
                                     <Button
                                         disabled={index === 0}
@@ -72,7 +74,8 @@ export default function VerticalLinearStepper() {
             </Stepper>
             {activeStep === steps.length && (
                 <Paper square elevation={0} sx={{ p: 3 }}>
-                    <Typography>All steps completed - you&apos;re finished</Typography>
+                    {/* <Typography>All steps completed - you&apos;re finished</Typography> */}
+                    <Results></Results>
                     <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
                         Reset
                     </Button>
