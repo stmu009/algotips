@@ -1,3 +1,4 @@
+import { createContext, useContext } from 'react';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -5,7 +6,6 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Topics from "../../data/tips";
 import { STEPS } from '../../data/constants';
 import Question from '../Question';
 import Feedback from '../Feedback';
@@ -109,21 +109,17 @@ export default function HorizontalNonLinearStepper(props) {
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext} sx={{ mr: 1 }}>
-                Next
-              </Button>
-              {activeStep !== STEPS.length &&
-                (completed[activeStep] ? (
-                  <Typography variant="caption" sx={{ display: 'inline-block' }}>
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button onClick={handleComplete}>
-                    {completedSteps() === totalSteps() - 1
-                      ? 'Finish'
-                      : 'Complete Step'}
-                  </Button>
-                ))}
+              {
+                activeStep !== STEPS.length &&
+                <Button 
+                variant="contained"
+                onClick={handleComplete}
+                >
+                  {completedSteps() === totalSteps() - 1
+                    ? 'Finish'
+                    : 'Complete Step'}
+                </Button>
+              }
             </Box>
           </React.Fragment>
         )}
