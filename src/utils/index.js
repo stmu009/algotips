@@ -1,2 +1,0 @@
-
-export { makeApiRequest } from "./makeApiRequest";
