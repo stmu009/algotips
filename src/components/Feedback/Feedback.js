@@ -11,11 +11,9 @@ export default function ErrorRadios(props) {
 
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState(false);
-  const [setHelperText] = React.useState('Choose wisely');
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
-    // setHelperText(' ');
     setError(false);
   };
 
