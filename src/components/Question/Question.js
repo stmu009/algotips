@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import * as React from "react";
 import { useEffect } from "react";
 import Radio from "@mui/material/Radio";
@@ -71,7 +72,7 @@ export default function ErrorRadios(props) {
             );
           })}
         </RadioGroup>
-        <FormHelperText sx={{ color: 'green' }}>{helperText}</FormHelperText>
+        <FormHelperText sx={{ color: 'green', fontSize: 'large' }}>{helperText}</FormHelperText>
         <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
           Check Answer
         </Button>
