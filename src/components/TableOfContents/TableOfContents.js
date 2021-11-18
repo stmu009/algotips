@@ -25,7 +25,6 @@ const TableOfContents = () => {
       {topics.map((topic, i) => {
         return (
           <TreeItem nodeId={i} label={topic} sx={{ fontSize: "2rem" }}>
-            {i === 2 ? <TreeItem nodeId={i*100} label="Calendar" /> : null}
           </TreeItem>
         );
       })}
