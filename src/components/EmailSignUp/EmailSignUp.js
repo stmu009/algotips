@@ -7,9 +7,15 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 
-// const submitEmail = () => {
-//   console.log(`this`, this);
-// };
+const submitEmail = (email) => {
+  console.log(`email:\n\n`, email);
+  const url = `/email?email=${email}`
+  
+  fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+};
 
 const EmailSignUp = () => {
   const [email, setEmail] = useState("");
@@ -22,9 +28,9 @@ const EmailSignUp = () => {
         justifyContent="space-evenly"
         alignItems="center"
         rowSpacing={4}
-        
+
       >
-      <Grid item margin={"dense"}>
+        <Grid item margin={"dense"}>
           <Typography variant="body1" color="initial">
             AlgoTips is a site with tips for coding interviews and questions for
             each tip.
@@ -55,7 +61,7 @@ const EmailSignUp = () => {
             >
               Delete
             </Button>
-            <Button color="success" variant="contained" endIcon={<SendIcon />}>
+            <Button onClick={() => submitEmail(email)} color="success" variant="contained" endIcon={<SendIcon />}>
               Send
             </Button>
             <Button color="secondary" variant="contained">
