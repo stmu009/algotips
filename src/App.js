@@ -1,11 +1,13 @@
-import './App.css';
-import Home from './pages/Home'
-
+import "./App.css";
+import Home from "./pages/Home";
+import {StateProvider} from "./store/StateProvider"
 
 function App() {
   return (
     <div className="App">
-      <Home></Home>
+      <StateProvider>
+        <Home></Home>
+      </StateProvider>
     </div>
   );
 }

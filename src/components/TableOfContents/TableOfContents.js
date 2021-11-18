@@ -4,9 +4,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import TreeItem from "@mui/lab/TreeItem";
 import Topics from "../../data/tips";
+import { useStore } from "../../store/useStore";
 
 const topics = Object.keys(Topics);
 const TableOfContents = () => {
+  const [selectedTopic, setSelectedTopic] = React.useState(topics[0]);
+  const {
+    topic,
+    setCurrentTopic,
+    // searchByName, getRandomRecipes
+  } = useStore();
+
   return (
     <TreeView
       aria-label="file system navigator"
@@ -24,8 +32,16 @@ const TableOfContents = () => {
     >
       {topics.map((topic, i) => {
         return (
-          <TreeItem nodeId={i} label={topic} sx={{ fontSize: "2rem" }}>
-          </TreeItem>
+          <TreeItem
+            key={i}
+            nodeId={topic}
+            label={topic}
+            sx={{ fontSize: "2rem" }}
+            onClick={() => 
+              setCurrentTopic(topic)
+              // setSelectedTopic(topic)
+            }
+          ></TreeItem>
         );
       })}
     </TreeView>

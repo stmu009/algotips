@@ -11,14 +11,28 @@ import HorizontalStepper from '../HorizontalStepper';
 import Topics from "../../data/tips";
 import Results from "../../components/Results";
 
+import { useStore } from "../../store/useStore";
+
+
 
 
 // https://mui.com/components/steppers/#VerticalLinearStepper.js
 
-const steps = Object.keys(Topics).map(x => ({ label: x }));
+const unsortedSteps = Object.keys(Topics).map(x => ({ label: x }));
 
 export default function VerticalLinearStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
+
+    
+    const {
+        topic,
+        setCurrentTopic,
+        // searchByName, getRandomRecipes
+      } = useStore();
+
+      const steps = topic ? unsortedSteps.filter((step)=>step.label==topic) : unsortedSteps;
+
+
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);

@@ -1,11 +1,16 @@
 import AppBar from "../../components/AppBar";
 import Box from "@mui/material/Box";
-import VerticalStepper from "../../components/VerticalStepper"
+import VerticalStepper from "../../components/VerticalStepper";
+import { createContext, useContext } from "react";
+
+const TopicContext = createContext('something');
 
 const Home = () => {
   return (
     <>
-      <AppBar />
+      <TopicContext.Provider value={"BUD"}>
+        <AppBar value={"BUD"}/>
+      </TopicContext.Provider>
       <Box
         sx={{
           display: "flex",
@@ -16,9 +21,10 @@ const Home = () => {
         }}
       >
         {
-          <VerticalStepper></VerticalStepper>
+          <TopicContext.Consumer>
+            {(value) => <VerticalStepper value={"BUD"}></VerticalStepper>}
+          </TopicContext.Consumer>
         }
-
       </Box>
     </>
   );
