@@ -1,7 +1,5 @@
 import AppBar from "../../components/AppBar";
 import Box from "@mui/material/Box";
-// import EmailSignUp from "../../components/EmailSignUp";
-// import Results from "../../components/Results";
 import VerticalStepper from "../../components/VerticalStepper"
 
 const Home = () => {
@@ -18,9 +16,7 @@ const Home = () => {
         }}
       >
         {
-          // <EmailSignUp></EmailSignUp>
           <VerticalStepper></VerticalStepper>
-          // <Results></Results>
         }
 
       </Box>
