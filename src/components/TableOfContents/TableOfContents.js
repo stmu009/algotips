@@ -7,13 +7,9 @@ import Topics from "../../data/tips";
 import { useStore } from "../../store/useStore";
 
 const topics = Object.keys(Topics);
-const TableOfContents = () => {
-  const [selectedTopic, setSelectedTopic] = React.useState(topics[0]);
-  const {
-    topic,
-    setCurrentTopic,
-    // searchByName, getRandomRecipes
-  } = useStore();
+const TableOfContents = (props) => {
+  const { setCurrentTopic } = useStore();
+  const { toggleTOC = ()=>{} } = props;
 
   return (
     <TreeView
@@ -37,9 +33,11 @@ const TableOfContents = () => {
             nodeId={topic}
             label={topic}
             sx={{ fontSize: "2rem" }}
-            onClick={() => 
-              setCurrentTopic(topic)
-              // setSelectedTopic(topic)
+            onClick={
+              () => {
+                setCurrentTopic(topic)
+                toggleTOC()
+              }
             }
           ></TreeItem>
         );

@@ -13,14 +13,14 @@ import Tip from '../Tip';
 // https://mui.com/components/steppers/#CustomizedSteppers.js
 
 export default function HorizontalNonLinearStepper(props) {
-  const { sectionLabel } = props
+  const { sectionLabel, handleIncorrect, handleTime } = props
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
 
   const stepMapping = {
     Tip: <Tip sectionLabel={sectionLabel}></Tip>,
-    Question: <Question sectionLabel={sectionLabel}></Question>,
+    Question: <Question sectionLabel={sectionLabel} handleIncorrect={handleIncorrect} handleTime={handleTime}></Question>,
     Feedback: <Feedback sectionLabel={sectionLabel}></Feedback>
   }
 
@@ -71,8 +71,12 @@ export default function HorizontalNonLinearStepper(props) {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stepper nonLinear activeStep={activeStep}>
+    <Box 
+    sx={{ width: '100%' }}
+    >
+      <Stepper nonLinear activeStep={activeStep}
+      sx={{ overflowX:'scroll',overflowY:'hidden', pb:'1rem' }}
+      >
         {STEPS.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import Questions from "../../data/questions"
 
 export default function ErrorRadios(props) {
-  const { sectionLabel } = props;
+  const { sectionLabel, handleIncorrect , handleTime } = props;
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Choose wisely");
@@ -20,12 +20,36 @@ export default function ErrorRadios(props) {
 
   const originalAnswerFeedback = Questions[sectionLabel][0][question]?.choicesWithFeedback || {}
 
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(true);
+
+  function toggle() {
+    setIsActive(!isActive);
+  }
+
+  function reset() {
+    setSeconds(0);
+    setIsActive(false);
+  }
+
   useEffect(() => {
     setAnswerFeedback(
       Object.keys(originalAnswerFeedback)
         ?.sort(() => 0.5 - Math.random())
     );
   }, [originalAnswerFeedback]);
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -37,7 +61,17 @@ export default function ErrorRadios(props) {
     event.preventDefault();
 
     const answer = Object.keys(originalAnswerFeedback)[0];
-    answer === value ? setError(false) : setError(true);
+    if(answer === value)
+      {
+        setError(false) 
+        handleTime(seconds)
+        console.log('seconds:\n\n', seconds)
+        reset()
+      }
+    else {
+        setError(true); 
+        handleIncorrect();
+      };
     setHelperText(
       originalAnswerFeedback[value]
         ? originalAnswerFeedback[value]

@@ -20,13 +20,35 @@ const Tip = (props) => {
 
 
     return (
-        <Card>
+        <Card sx={{
+            bgcolor: 'background.paper',
+            boxShadow: 1,
+            borderRadius: 1,
+            p: 2,
+            width: '90%',
+            margin: '0 auto'
+          }}>
             <CardHeader title={sectionLabel} /* subheader="subheader for multiple questions in the same section"*/ />
             {media && 
-                <CardMedia component="img" height="10%"
+                <CardMedia component="img" 
+                height="10%"
+                sx={{
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 1,
+                    p: 2,
+                    width: '80%',
+                    margin: '0 auto'
+                  }}
                 image={media} alt="Random" />}
             {mediaReference &&
-                <Typography variant="caption">
+                <Typography variant="caption"
+                sx={{
+                    
+                    width: '80%',
+                    marginLeft: '10%',
+                  }}
+                >
                     <em>media source:{mediaReference}</em>
                 </Typography>}
             <CardContent>
